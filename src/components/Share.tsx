@@ -70,6 +70,12 @@ const Share = () => {
             >
               EDIT
             </div>
+            <div
+              className="absolute top-2 right-2 bg-black bg-opacity-50 text-white h-8 w-8 rounded-full flex items-center justify-center cursor-pointer font-bold text-sm"
+              onClick={() => setMedia(null)}
+            >
+              x
+            </div>
           </div>
         )}
         {media?.type.includes("video") && previewURL && (
