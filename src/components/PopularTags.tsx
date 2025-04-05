@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "./image";
 
 const PopularTags = () => {
@@ -25,7 +26,59 @@ const PopularTags = () => {
         </div>
       </div>
       {/* TOPICS */}
-      <div className=""></div>
+      <div className="">
+        <div className="flex items-center justify-between">
+          <span className="text-textGrayLight font-semibold">
+            Technology * Trending
+          </span>
+          <Image
+            path="icons/infoMore.svg"
+            alt="info"
+            w={16}
+            h={16}
+            className="cursor-pointer"
+          />
+        </div>
+        <h2 className="text-textGrayLight font-bold">OpneAI</h2>
+        <span className="text-textGray text-sm">20K posts</span>
+      </div>
+      {/* TOPICS */}
+      <div className="">
+        <div className="flex items-center justify-between">
+          <span className="text-textGrayLight font-semibold">
+            Technology * Trending
+          </span>
+          <Image
+            path="icons/infoMore.svg"
+            alt="info"
+            w={16}
+            h={16}
+            className="cursor-pointer"
+          />
+        </div>
+        <h2 className="text-textGrayLight font-bold">OpneAI</h2>
+        <span className="text-textGray text-sm">20K posts</span>
+      </div>
+      {/* TOPICS */}
+      <div className="">
+        <div className="flex items-center justify-between">
+          <span className="text-textGrayLight font-semibold">
+            Technology * Trending
+          </span>
+          <Image
+            path="icons/infoMore.svg"
+            alt="info"
+            w={16}
+            h={16}
+            className="cursor-pointer"
+          />
+        </div>
+        <h2 className="text-textGrayLight font-bold">OpneAI</h2>
+        <span className="text-textGray text-sm">20K posts</span>
+      </div>
+      <Link href="/" className="text-iconBlue">
+        Show More
+      </Link>
     </div>
   );
 };
