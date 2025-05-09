@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "@/components/image";
+import Image from "@/components/Image";
 import { useRouter } from "next/navigation";
 
 const PostModal = () => {

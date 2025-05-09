@@ -15,13 +15,13 @@ const HomePage = () => {
         <Link className="pb-3 flex items-center" href="/">
           Following
         </Link>
-        <Link className="hidden pb-3 flex items-center" href="/">
+        <Link className="hidden pb-3 md:flex items-center" href="/">
           React
         </Link>
-        <Link className="hidden pb-3 flex items-center" href="/">
+        <Link className="hidden pb-3 md:flex items-center" href="/">
           Javascript
         </Link>
-        <Link className="hidden pb-3 flex items-center" href="/">
+        <Link className="hidden pb-3 md:flex items-center" href="/">
           css
         </Link>
       </div>

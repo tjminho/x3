@@ -1,5 +1,5 @@
 import { imagekit } from "@/utils";
-import Image from "./image";
+import Image from "./Image";
 import PostInfo from "./PostInfo";
 import PostInteractions from "./PostInteractions";
 import Video from "./Video";
@@ -16,19 +16,23 @@ interface fileDetailsResponse {
   };
 }
 
-const Post = async ({ type }: { type?: "status" | "comment" }) => {
-  const getFileDetails = async (
-    fileId: string
-  ): Promise<fileDetailsResponse> => {
-    return new Promise((resolve, reject) => {
-      imagekit.getFileDetails(fileId, function (error, result) {
-        if (error) reject(error);
-        else resolve(result as fileDetailsResponse);
-      });
-    });
-  };
+const Post = ({ type }: { type?: "status" | "comment" }) => {
+  // FETCH POST MEDIA
 
-  const fileDetails = await getFileDetails("67d62f9a432c4764166200b3");
+  // const getFileDetails = async (
+  //   fileId: string
+  // ): Promise<fileDetailsResponse> => {
+  //   return new Promise((resolve, reject) => {
+  //     imagekit.getFileDetails(fileId, function (error, result) {
+  //       if (error) reject(error);
+  //       else resolve(result as fileDetailsResponse);
+  //     });
+  //   });
+  // };
+
+  // const fileDetails = await getFileDetails("67d62f9a432c4764166200b3");
+
+  // console.log(fileDetails);
 
   return (
     <div className="p-4 border-y-[1px] border-borderGray">
@@ -109,8 +113,8 @@ const Post = async ({ type }: { type?: "status" | "comment" }) => {
               aspernatur quibusdam corrupti, saepe expedita?
             </p>
           </Link>
-          {/* <Image path="posts/post.jpeg" alt="" w={600} h={600} /> */}
-          {fileDetails && fileDetails.fileType === "image" ? (
+          <Image path="posts/post.jpeg" alt="" w={600} h={600} />
+          {/* {fileDetails && fileDetails.fileType === "image" ? (
             <Image
               path={fileDetails.filePath}
               alt=""
@@ -123,7 +127,7 @@ const Post = async ({ type }: { type?: "status" | "comment" }) => {
               path={fileDetails.filePath}
               className={fileDetails.customMetadata?.sensitive ? "blur-lg" : ""}
             />
-          )}
+          )} */}
           {type === "status" && (
             <span className="text-textGray">8:41 PM Dec 5, 2024</span>
           )}

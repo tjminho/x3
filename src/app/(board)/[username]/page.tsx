@@ -1,8 +1,16 @@
 import Feed from "@/components/Feed";
-import Image from "@/components/image";
+import Image from "@/components/Image";
+import { prisma } from "@/prisma";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
-const UaserPage = () => {
+const UserPage = async ({ params }: { params: { username: string } }) => {
+  const user = await prisma.user.findUnique({
+    where: { username: params.username },
+  });
+
+  if (!user) return notFound();
+
   return (
     <div className="">
       {/* PROFILE */}
@@ -10,7 +18,7 @@ const UaserPage = () => {
         <Link href="">
           <Image path="icons/back.svg" alt="back" w={24} h={24} />
         </Link>
-        <h1 className="font-bold text-lg">Jinhaen Dev</h1>
+        <h1 className="font-bold text-lg">Jinhaeng Dev</h1>
       </div>
       {/* INFO */}
       <div className="">
@@ -89,9 +97,9 @@ const UaserPage = () => {
         </div>
       </div>
       {/* FEED */}
-      <Feed />
+      <Feed userProfileId={user.id} />
     </div>
   );
 };
 
-export default UaserPage;
+export default UserPage;
