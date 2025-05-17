@@ -32,6 +32,22 @@ export async function GET(request: NextRequest) {
 
   const posts = await prisma.post.findMany({
     where: whereCondition,
+    include: {
+      user: { select: { displayName: true, img: true, username: true } },
+      rePost: {
+        include: {
+          user: { select: { displayName: true, img: true, username: true } },
+          _count: { select: { likes: true, rePosts: true, comments: true } },
+          likes: { where: { userId: userId }, select: { id: true } },
+          rePosts: { where: { userId: userId }, select: { id: true } },
+          saves: { where: { userId: userId }, select: { id: true } },
+        },
+      },
+      _count: { select: { likes: true, rePosts: true, comments: true } },
+      likes: { where: { userId: userId }, select: { id: true } },
+      rePosts: { where: { userId: userId }, select: { id: true } },
+      saves: { where: { userId: userId }, select: { id: true } },
+    },
     take: LIMIT,
     skip: (Number(page) - 1) * LIMIT,
   });
@@ -39,6 +55,8 @@ export async function GET(request: NextRequest) {
   const totalPosts = await prisma.post.count({ where: whereCondition });
 
   const hasMore = Number(page) * LIMIT < totalPosts;
+
+  await new Promise((resolve) => setTimeout(resolve, 3000));
 
   return Response.json({ posts, hasMore });
 }
